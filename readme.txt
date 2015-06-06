@@ -20,9 +20,11 @@ The UpCast website is https://upcast.me
 
 == Installation  ==
 
-1. Download the Zip-Archive and extract all files into your wp-content/plugins/ directory.
-2. Go into your WordPress administration page, click on Plugins and activate it.
-
+1. Download the Zip-Archive and extract all files into your wp-content/plugins/ directory
+1. Go into your WordPress administration page, click on Plugins and activate it
+1. Configure your default settings under WordPress administration (Settings->UpCast)
+1. Obtain your RSS link (on upcast.me under podcast->publishing) and paste into the 'feed' setting
+1. Add the [upcast] shortcode on a page or post, or add the UpCast widget under Appearance->Widgets
 
 ==  Usage ==
 Use WordPress administration to set UpCast defaults, or just add the UpCast widget to a sidebar.
@@ -40,6 +42,13 @@ Or for top-level podcast details:
 [upcast_thumbnail feed="<podcast link>"]
 
 [upcast_rss feed="<podcast link>"]<h1>[title]</h1>[/upcast_rss]
+
+== Screenshots ==
+
+1. Shortcode defaults allow you to configure everything from podcast column headings to styled HTML templates.
+2. Widgets allow all the same customisations as shortcodes but with floating layouts for elegant resizing.
+3. The plugin lets you specify equivalent settings to those on the UpCast pdocasting platform at upcast.me.
+4. You can even customise how clicks on your podcast episodes from wordpress will appear in upcast.me analytics.
 
 == Version History ==
 
