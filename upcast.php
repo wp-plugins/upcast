@@ -216,7 +216,7 @@ function upcast_shortcode ($atts, $content = null) {
 	$output = '';
 
 	$rss_items = $rss->get_items(0, $maxitems);
-	error_log('rss_items='.count($rss_items));
+	//error_log('rss_items='.count($rss_items));
 	$rsscount = 0;
 		
 	if ($content == '') {
@@ -266,10 +266,12 @@ function upcast_shortcode ($atts, $content = null) {
 	}
 	// Pre-find all the substitutions and locations in the content to be repeated for each row
 	$matches = array();
-	preg_match_all('/\[('.str_replace(',','|',UPCAST_FIELD_NAMES).')\]/i', $content, $matches, PREG_OFFSET_CAPTURE);
-	
+	preg_match_all('/[\[{]('.str_replace(',','|',UPCAST_FIELD_NAMES).')[\]}]/i', $content, $matches, PREG_OFFSET_CAPTURE);
+	error_log('content='.print_r($content, true));
+	error_log(print_r($matches, true));
 	foreach ($rss_items as $item)
 	{
+		error_log('got here #1.1');
 		//error_log('content:"'.$content.'"');
 		$selected = true;
 		
@@ -311,7 +313,8 @@ function upcast_shortcode ($atts, $content = null) {
 			$rsscount++;
 			if ($max && $rsscount > $max)
 				break;
-				
+			error_log('got here #1.2');
+	
 			if (isset($matches[1])) {
 				$row = $content;
 				// work through in reverse so substitutions do not affect earlier offsets
@@ -331,6 +334,8 @@ function upcast_shortcode ($atts, $content = null) {
 							$text = $item->get_description();
 							break;
 						case 'title':
+		error_log('got here #1.3');
+						
 							$text = $item->get_title();
 							break;
 						case 'date':
